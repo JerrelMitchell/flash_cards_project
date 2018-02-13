@@ -19,11 +19,13 @@ class Round
   end
 
   def number_correct
-    if record_guess(guess) == Guess.new(guess, current_card).answer
-      @guess_count += 1
-    else
-      @guess_count + 0
+    decisions = guesses.map do |guess|
+      guess.correct?.to_s
     end
+    correct = decisions.find_all do |decision|
+      decision.include?('true')
+    end
+    correct.count
   end
 
   # def percent_correct
