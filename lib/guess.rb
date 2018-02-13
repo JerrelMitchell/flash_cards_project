@@ -1,10 +1,9 @@
 class Guess
-  attr_reader :card,
-              :response
+  attr_reader :card, :response
 
   def initialize(guess, flash_card)
-    @guess = guess
-    @card = flash_card
+    @guess    = guess
+    @card     = flash_card
     @response = flash_card.answer
   end
 

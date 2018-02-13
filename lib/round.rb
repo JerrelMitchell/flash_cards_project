@@ -1,7 +1,6 @@
 require 'pry'
-class Round
-  attr_reader :deck,
-              :guesses
+class Round < Guess
+  attr_reader :deck, :guesses
 
   def initialize(deck)
     @deck = deck
@@ -22,12 +21,15 @@ class Round
     decisions = guesses.map do |guess|
       guess.correct?.to_s
     end
-    correct = decisions.find_all do |decision|
+    @correct = decisions.find_all do |decision|
       decision.include?('true')
     end
-    correct.count
+    @correct.count
   end
 
-  # def percent_correct
-  # end
+  def percent_correct
+    quotient = @correct.count.to_f / @guesses.count.to_f
+    percentage = quotient * 100
+    percentage.to_i
+  end
 end
