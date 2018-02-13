@@ -15,8 +15,10 @@ class Round
   end
 
   def record_guess(guess)
+    @user_guess = Guess.new(guess, flash_card)
     @guess_count += 1
     guesses << guess
+    # binding.pry
   end
 
 end
