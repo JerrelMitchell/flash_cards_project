@@ -67,5 +67,8 @@ class FlashCardsTest < Minitest::Test
     assert_instance_of Deck, round.deck
     assert_equal [], round.guesses
     assert_equal card1, round.current_card
+    assert_equal ['Juneau'], round.record_guess('Juneau')
+    assert_equal 1, round.guesses.count
+    assert_equal 'Correct!', round.guesses.first.feedback
   end
 end
