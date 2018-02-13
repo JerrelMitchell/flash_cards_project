@@ -19,7 +19,13 @@ class Round
   end
 
   def number_correct
-    1
+    if record_guess(guess) == Guess.new(guess, current_card).answer
+      @guess_count += 1
+    else
+      @guess_count + 0
+    end
   end
 
+  # def percent_correct
+  # end
 end
