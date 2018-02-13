@@ -5,20 +5,21 @@ class Round
 
   def initialize(deck)
     @deck = deck
-    @guess_count = 0
     @guesses = []
     # binding.pry
   end
 
   def current_card
-    @deck.cards.first
+    @deck.cards[guesses.length]
   end
 
   def record_guess(guess)
-    @user_guess = Guess.new(guess, flash_card)
-    @guess_count += 1
-    guesses << guess
-    # binding.pry
+    @guesses << Guess.new(guess, current_card)
+    guess
+  end
+
+  def number_correct
+    1
   end
 
 end
