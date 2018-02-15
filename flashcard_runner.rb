@@ -8,12 +8,9 @@ require 'pry'
 class GameRunner
   def initialize
     @card1 = Card.new('What is the capital of Alaska?', 'Juneau')
-    @card2 = Card.new('Approximately how many miles are in
-                      one astronomical unit?', '93,000,000')
-    @card3 = Card.new('Describe in words the exact direction that is 697.5°
-                      clockwise from due north?', 'North north west')
+    @card2 = Card.new('What is the color of the sky?', 'Blue')
+    @card3 = Card.new('What is the capital of Texas?', 'Austin')
     @deck  = Deck.new([@card1, @card2, @card3])
-    @guess = Guess.new(@deck, @card1)
     @round = Round.new(@deck)
   end
 
@@ -37,7 +34,7 @@ class GameRunner
   end
 
   def ask_question
-    "Question: #{@current_card.question}"
+    "Question: #{@card1.question}"
   end
 
   def score
@@ -52,6 +49,7 @@ class GameRunner
 end
 
 game = GameRunner.new
+# guess = Guess.new(user_guess, @current_card)
 
 puts game.header
 puts game.start

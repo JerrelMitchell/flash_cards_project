@@ -18,7 +18,7 @@ class DeckTest < Minitest::Test
     assert_instance_of Deck, @deck
   end
 
-  def test_it_can_store_a_deck
+  def test_can_create_and_count_a_deck
     assert_equal @deck.cards, [@card1, @card2, @card3]
     assert_equal 3, @deck.count
   end

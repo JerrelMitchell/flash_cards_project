@@ -7,13 +7,12 @@ require './lib/round'
 
 class RoundTest < Minitest::Test
   def setup
-    @card1 = Card.new('What is the capital of Alaska?', 'Juneau')
-    @card2 = Card.new('Approximately how many miles are in
-                      one astronomical unit?', '93,000,000')
-    @card3 = Card.new('What is the capital of Texas?', 'Austin')
-    @card4 = Card.new('How many continents are there?', '7')
-    @deck  = Deck.new([@card1, @card2, @card3, @card4])
-    @round = Round.new(@deck)
+    @card1  = Card.new('What is the capital of Alaska?', 'Juneau')
+    @card2  = Card.new('What is the color of the sky?', 'Blue')
+    @card3  = Card.new('What is the capital of Texas?', 'Austin')
+    @card4  = Card.new('How many continents are there?', '7')
+    @deck   = Deck.new([@card1, @card2, @card3, @card4])
+    @round  = Round.new(@deck)
   end
 
   def test_rounds_exist
@@ -31,7 +30,7 @@ class RoundTest < Minitest::Test
     assert_equal @card1, @round.current_card
     assert_equal 'Juneau', @round.record_guess('Juneau')
     assert_equal 1, @round.guesses.count
-    assert_equal 'Correct!', @round.guesses.last.feedback
+    assert_equal 'Correct!', @round.guesses.first.feedback
     assert_equal 1, @round.number_correct
   end
 
@@ -43,7 +42,7 @@ class RoundTest < Minitest::Test
     assert_equal 0, @round.number_correct
   end
 
-  def test_it_can_check_multiple_guesses
+  def test_it_can_check_multiple_guesses_in_a_round
     assert_equal @card1, @round.current_card
     assert_equal 'Juneau', @round.record_guess('Juneau')
     assert_equal 1, @round.guesses.count
@@ -69,7 +68,7 @@ class RoundTest < Minitest::Test
     assert_equal 3, @round.number_correct
   end
 
-  def test_it_can_check_percentage_of_correct_guesses
+  def test_it_can_check_percentage_of_correct_guesses_in_a_round
     assert_equal @card1, @round.current_card
     assert_equal 'Juneau', @round.record_guess('Juneau')
     assert_equal 1, @round.guesses.count
