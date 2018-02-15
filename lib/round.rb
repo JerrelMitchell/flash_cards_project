@@ -5,7 +5,6 @@ class Round < Guess
   def initialize(deck)
     @deck = deck
     @guesses = []
-    # binding.pry
   end
 
   def current_card
