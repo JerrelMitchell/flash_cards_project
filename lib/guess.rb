@@ -8,12 +8,14 @@ class Guess
   end
 
   def correct?
-    return false unless @guess == @response
-    true
+    @guess == @response
   end
 
   def feedback
-    return 'Correct!' unless @guess != @response
-    'Incorrect.'
+    if correct?
+      'Correct!'
+    else
+      'Incorrect.'
+    end
   end
 end

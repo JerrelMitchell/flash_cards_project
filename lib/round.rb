@@ -1,5 +1,5 @@
 require 'pry'
-class Round < Guess
+class Round
   attr_reader :deck, :guesses
 
   def initialize(deck)
