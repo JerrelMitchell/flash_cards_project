@@ -23,7 +23,23 @@ class RoundTest < Minitest::Test
     assert_equal 1, @round.guesses.count
   end
 
-  def test_it_can_check_number_of_correct_guesses
+  def test_it_can_check_a_correct_guess_in_a_round
+    assert_equal @card1, @round.current_card
+    assert_equal 'Juneau', @round.record_guess('Juneau')
+    assert_equal 1, @round.guesses.count
+    assert_equal 'Correct!', @round.guesses.last.feedback
+    assert_equal 1, @round.number_correct
+  end
+
+  def test_it_can_check_an_incorrect_guess_in_a_round
+    assert_equal @card1, @round.current_card
+    assert_equal '2', @round.record_guess('2')
+    assert_equal 1, @round.guesses.count
+    assert_equal 'Incorrect.', @round.guesses.last.feedback
+    assert_equal 0, @round.number_correct
+  end
+
+  def test_it_can_check_multiple_guesses
     assert_equal @card1, @round.current_card
     assert_equal 'Juneau', @round.record_guess('Juneau')
     assert_equal 1, @round.guesses.count
