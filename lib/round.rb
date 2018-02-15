@@ -1,4 +1,4 @@
-require 'pry'
+# set up for number of correct and incorrect guesses for a deck of flashcards.
 class Round
   attr_reader :deck, :guesses
 

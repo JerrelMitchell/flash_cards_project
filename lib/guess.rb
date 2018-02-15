@@ -1,3 +1,4 @@
+# set up for response to a flash card.
 class Guess
   attr_reader :card, :response
 
