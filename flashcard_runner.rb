@@ -1,5 +1,5 @@
-require './lib/deck'
 require './lib/flash_cards'
+require './lib/deck'
 require './lib/guess'
 require './lib/round'
 
@@ -13,9 +13,8 @@ class GameRunner
     @card3 = Card.new('Describe in words the exact direction that is 697.5°
                       clockwise from due north?', 'North north west')
     @deck  = Deck.new([@card1, @card2, @card3])
+    @guess = Guess.new(@deck, @card1)
     @round = Round.new(@deck)
-    @start = @round
-    # @current_card
   end
 
   def start
@@ -24,13 +23,17 @@ class GameRunner
   end
 
   def header
-    header_message = "Welcome! You're playing with #{@deck.count} cards.\n"
-    header_boarder = '______________________________________'
+    header_message = "WELCOME! You're playing with #{@deck.count} cards.\n"
+    header_boarder = '_____________________________________'
     header_message + header_boarder
   end
 
   def footer
-    '********** Game Over! **********'
+    '************* Game Over! *************'
+  end
+
+  def incorrect_input
+    "Sorry, I don't understand that command."
   end
 
   def ask_question
@@ -52,20 +55,25 @@ game = GameRunner.new
 
 puts game.header
 puts game.start
-start_command = gets.chomp
-puts game.show_current_card
-puts game.ask_question
-guess = gets.chomp
-puts game.feedback
+start_command = gets.chomp.upcase
 
-puts footer
-puts score
-
-round.record_guess(gets.chomp)
-round.guesses.count
-puts round.guesses.first.feedback
-round.record_guess(gets.chomp)
-round.guesses.count
-puts round.guesses.last.feedback
-round.number_correct
-round.percent_correct
+while start_command.to_s != 'START'
+  puts game.incorrect_input
+  start_command = gets.chomp.upcase
+end
+# puts game.show_current_card
+# puts game.ask_question
+# guess = gets.chomp
+# puts game.feedback
+#
+# puts footer
+# puts score
+#
+# round.record_guess(gets.chomp)
+# round.guesses.count
+# puts round.guesses.first.feedback
+# round.record_guess(gets.chomp)
+# round.guesses.count
+# puts round.guesses.last.feedback
+# round.number_correct
+# round.percent_correct

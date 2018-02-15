@@ -1,3 +1,5 @@
+require 'pry'
+
 # set up for number of correct and incorrect guesses for a deck of flashcards.
 class Round
   attr_reader :deck, :guesses
@@ -17,17 +19,17 @@ class Round
   end
 
   def number_correct
-    decisions = guesses.map do |guess|
-      guess.correct?.to_s
+    inputs = guesses.map do |guess|
+      guess.correct?
     end
-    @correct = decisions.find_all do |decision|
-      decision.include?('true')
+    @correct = inputs.find_all do |input|
+      input == true
     end
     @correct.count
   end
 
   def percent_correct
-    quotient = @correct.count.to_f / @guesses.count.to_f
+    quotient = @correct.count / @guesses.count.to_f
     percentage = quotient * 100
     percentage.to_i
   end
