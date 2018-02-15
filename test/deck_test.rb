@@ -14,7 +14,7 @@ class DeckTest < Minitest::Test
     @deck = Deck.new([@card1, @card2, @card3])
   end
 
-  def test_it_exists
+  def test_deck_exists
     assert_instance_of Deck, @deck
   end
 

@@ -7,7 +7,7 @@ class FlashCardsTest < Minitest::Test
     @card = Card.new('What is the capital of Alaska?', 'Juneau')
   end
 
-  def test_it_exists
+  def test_flashcard_exists
     assert_instance_of Card, @card
   end
 
