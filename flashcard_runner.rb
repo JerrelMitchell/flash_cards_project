@@ -2,6 +2,8 @@ require './lib/flash_cards'
 require './lib/deck'
 require './lib/guess'
 require './lib/round'
+require 'simplecov'
+SimpleCov.start
 
 require 'pry'
 
@@ -59,6 +61,7 @@ while start_command.to_s != 'START'
   puts game.incorrect_input
   start_command = gets.chomp.upcase
 end
+
 # puts game.show_current_card
 # puts game.ask_question
 # guess = gets.chomp

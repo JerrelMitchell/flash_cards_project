@@ -2,6 +2,8 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/flash_cards'
 require './lib/guess'
+require 'simplecov'
+SimpleCov.start
 
 class GuessTest < Minitest::Test
   def setup

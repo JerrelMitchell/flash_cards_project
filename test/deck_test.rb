@@ -3,6 +3,8 @@ require 'minitest/pride'
 require './lib/flash_cards'
 require './lib/guess'
 require './lib/deck'
+require 'simplecov'
+SimpleCov.start
 
 class DeckTest < Minitest::Test
   def setup
@@ -18,7 +20,11 @@ class DeckTest < Minitest::Test
     assert_instance_of Deck, @deck
   end
 
-  def test_can_create_and_count_a_deck
+  def test_can_create_a_deck_of_cards
+    assert_equal @deck.cards, [@card1, @card2, @card3]
+  end
+
+  def test_can_count_a_deck_of_cards
     assert_equal @deck.cards, [@card1, @card2, @card3]
     assert_equal 3, @deck.count
   end

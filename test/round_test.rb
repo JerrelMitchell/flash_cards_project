@@ -4,6 +4,8 @@ require './lib/flash_cards'
 require './lib/guess'
 require './lib/deck'
 require './lib/round'
+require 'simplecov'
+SimpleCov.start
 
 class RoundTest < Minitest::Test
   def setup
@@ -17,6 +19,10 @@ class RoundTest < Minitest::Test
 
   def test_rounds_exist
     assert_instance_of Round, @round
+  end
+
+  def test_decks_can_be_in_a_round
+    assert_equal @deck, @round.deck
   end
 
   def test_there_can_be_a_round
@@ -74,18 +80,21 @@ class RoundTest < Minitest::Test
     assert_equal 1, @round.guesses.count
     assert_equal 'Correct!', @round.guesses.last.feedback
     assert_equal 1, @round.number_correct
+    assert_equal 100, @round.percent_correct
 
     assert_equal @card2, @round.current_card
     assert_equal '2', @round.record_guess('2')
     assert_equal 2, @round.guesses.count
     assert_equal 'Incorrect.', @round.guesses.last.feedback
     assert_equal 1, @round.number_correct
+    assert_equal 50, @round.percent_correct
 
     assert_equal @card3, @round.current_card
     assert_equal 'Austin', @round.record_guess('Austin')
     assert_equal 3, @round.guesses.count
     assert_equal 'Correct!', @round.guesses.last.feedback
     assert_equal 2, @round.number_correct
+    assert_equal 66, @round.percent_correct
 
     assert_equal @card4, @round.current_card
     assert_equal '7', @round.record_guess('7')
