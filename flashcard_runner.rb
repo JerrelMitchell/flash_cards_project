@@ -5,6 +5,7 @@ require './lib/round'
 
 require 'pry'
 
+# handles cards, deck(s), round(s), and their methods to output to terminal.
 class GameRunner < Round
   def initialize
     @card1 = Card.new('What is the capital of Alaska?', 'Juneau')
@@ -48,8 +49,12 @@ class GameRunner < Round
   end
 end
 
+@card1 = Card.new('What is the capital of Alaska?', 'Juneau')
+@card2 = Card.new('What is the color of the sky?', 'Blue')
+@card3 = Card.new('What is the capital of Texas?', 'Austin')
+@deck  = Deck.new([@card1, @card2, @card3])
+@round = Round.new(@deck)
 game = GameRunner.new
-# guess = Guess.new(user_guess, @current_card)
 
 puts game.header
 puts game.start
@@ -63,15 +68,14 @@ end
 puts game.show_current_card
 puts game.ask_question
 
-game.record_guess(gets.chomp.to_s.capitalize)
-puts game.guesses.last.feedback
-
+@round.record_guess(gets.chomp.to_s.capitalize)
+puts @round.guesses.last.feedback
 puts game.show_current_card
 puts game.ask_question
 
 # puts footer
 # puts score
-#
+
 # round.record_guess(gets.chomp)
 # round.guesses.count
 # puts round.guesses.first.feedback
