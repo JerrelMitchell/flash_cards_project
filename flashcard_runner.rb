@@ -2,12 +2,10 @@ require './lib/flash_cards'
 require './lib/deck'
 require './lib/guess'
 require './lib/round'
-require 'simplecov'
-SimpleCov.start
 
 require 'pry'
 
-class GameRunner
+class GameRunner < Round
   def initialize
     @card1 = Card.new('What is the capital of Alaska?', 'Juneau')
     @card2 = Card.new('What is the color of the sky?', 'Blue')
@@ -46,7 +44,7 @@ class GameRunner
   end
 
   def show_current_card
-    "This is card number #{@round.guesses.count} out of #{@deck.count}."
+    "This is card number #{@round.guesses.count + 1} out of #{@deck.count}."
   end
 end
 
@@ -62,11 +60,15 @@ while start_command.to_s != 'START'
   start_command = gets.chomp.upcase
 end
 
-# puts game.show_current_card
-# puts game.ask_question
-# guess = gets.chomp
-# puts game.feedback
-#
+puts game.show_current_card
+puts game.ask_question
+
+game.record_guess(gets.chomp.to_s.capitalize)
+puts game.guesses.last.feedback
+
+puts game.show_current_card
+puts game.ask_question
+
 # puts footer
 # puts score
 #
