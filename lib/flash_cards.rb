@@ -1,5 +1,5 @@
 # set up for a single flash card.
-class Card
+class FlashCard
   attr_reader :question, :answer
 
   def initialize(question, answer)

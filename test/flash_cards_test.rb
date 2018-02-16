@@ -6,11 +6,11 @@ SimpleCov.start
 
 class FlashCardsTest < Minitest::Test
   def setup
-    @card = Card.new('What is the capital of Alaska?', 'Juneau')
+    @card = FlashCard.new('What is the capital of Alaska?', 'Juneau')
   end
 
   def test_card_exists
-    assert_instance_of Card, @card
+    assert_instance_of FlashCard, @card
   end
 
   def test_can_ask_a_question

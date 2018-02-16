@@ -8,9 +8,9 @@ require 'pry'
 # handles cards, deck(s), round(s), and their methods to output to terminal.
 class GameRunner < Round
   def initialize
-    @card1 = Card.new('What is the capital of Alaska?', 'Juneau')
-    @card2 = Card.new('What is the color of the sky?', 'Blue')
-    @card3 = Card.new('What is the capital of Texas?', 'Austin')
+    @card1 = FlashCard.new('What is the capital of Alaska?', 'Juneau')
+    @card2 = FlashCard.new('What is the color of the sky?', 'Blue')
+    @card3 = FlashCard.new('What is the capital of Texas?', 'Austin')
     @deck  = Deck.new([@card1, @card2, @card3])
     @round = Round.new(@deck)
   end
@@ -49,9 +49,9 @@ class GameRunner < Round
   end
 end
 
-@card1 = Card.new('What is the capital of Alaska?', 'Juneau')
-@card2 = Card.new('What is the color of the sky?', 'Blue')
-@card3 = Card.new('What is the capital of Texas?', 'Austin')
+@card1 = FlashCard.new('What is the capital of Alaska?', 'Juneau')
+@card2 = FlashCard.new('What is the color of the sky?', 'Blue')
+@card3 = FlashCard.new('What is the capital of Texas?', 'Austin')
 @deck  = Deck.new([@card1, @card2, @card3])
 @round = Round.new(@deck)
 game = GameRunner.new
