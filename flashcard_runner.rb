@@ -3,8 +3,6 @@ require './lib/deck'
 require './lib/guess'
 require './lib/round'
 
-require 'pry'
-
 # handles cards, deck(s), round(s), and their methods to output to terminal.
 class GameRunner < Round
   def initialize

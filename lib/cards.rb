@@ -1,4 +1,4 @@
-# set up for a single flash card.
+# set up for a single card.
 class Card
   attr_reader :question, :answer
 

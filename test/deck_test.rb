@@ -2,8 +2,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/cards'
 require './lib/deck'
-require 'simplecov'
-SimpleCov.start
 
 class DeckTest < Minitest::Test
   def setup

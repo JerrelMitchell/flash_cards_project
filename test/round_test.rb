@@ -3,8 +3,6 @@ require 'minitest/pride'
 require './lib/cards'
 require './lib/deck'
 require './lib/round'
-require 'simplecov'
-SimpleCov.start
 
 class RoundTest < Minitest::Test
   def setup

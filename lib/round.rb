@@ -1,4 +1,5 @@
-require 'pry'
+# combines deck(s) and guesses framework to check that user input equals the
+# answer on an individual card, and shows number/percentage of correct guesses.
 class Round
   attr_reader :deck, :guesses
 

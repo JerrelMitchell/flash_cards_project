@@ -1,8 +1,9 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/cards'
-require 'simplecov'
-SimpleCov.start
 
 class CardsTest < Minitest::Test
   def setup
