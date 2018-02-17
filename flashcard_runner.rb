@@ -3,9 +3,9 @@ require './lib/deck'
 require './lib/guess'
 require './lib/round'
 
-@card1 = Card.new('What is the capital of Alaska?', 'Juneau')
-@card2 = Card.new('What is the color of the sky?', 'Blue')
-@card3 = Card.new('What is the capital of Texas?', 'Austin')
+@card1 = Card.new('What is the capital of Alaska?', 'juneau')
+@card2 = Card.new('What is the color of the sky?', 'blue')
+@card3 = Card.new('What is the capital of Texas?', 'austin')
 @deck  = Deck.new([@card1, @card2, @card3])
 @round = Round.new(@deck)
 
@@ -33,7 +33,7 @@ end
 def footer_with_score
   "************* Game Over! ************* \n" \
   "You had #{@round.number_correct} correct guesses out of #{@deck.count} " \
-   "for a score of #{@round.percent_correct}%."
+  "for a score of #{@round.percent_correct}%."
 end
 
 puts header
@@ -47,19 +47,19 @@ end
 
 puts show_current_card
 puts ask_question
-@round.record_guess(gets.chomp.to_s.capitalize)
+@round.record_guess(gets.chomp.to_s.downcase)
 puts @round.guesses.last.feedback
 @round.number_correct
 
 puts show_current_card
 puts ask_question
-@round.record_guess(gets.chomp.to_s.capitalize)
+@round.record_guess(gets.chomp.to_s.downcase)
 puts @round.guesses.last.feedback
 @round.number_correct
 
 puts show_current_card
 puts ask_question
-@round.record_guess(gets.chomp.to_s.capitalize)
+@round.record_guess(gets.chomp.to_s.downcase)
 puts @round.guesses.last.feedback
 @round.number_correct
 
