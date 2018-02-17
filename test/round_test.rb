@@ -18,15 +18,15 @@ class RoundTest < Minitest::Test
     assert_instance_of Round, @round
   end
 
+  def test_decks_can_be_in_a_round
+    assert_equal @deck, @round.deck
+  end
+
   def test_there_can_be_a_round
     assert_equal [], @round.guesses
     assert_equal @card1, @round.current_card
     assert_equal 'Juneau', @round.record_guess('Juneau')
     assert_equal 1, @round.guesses.count
-  end
-
-  def test_decks_can_be_in_a_round
-    assert_equal @deck, @round.deck
   end
 
   def test_it_can_check_a_correct_guess_in_a_round
