@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/flash_cards'
+require './lib/cards'
 require './lib/deck'
 require './lib/round'
 require 'simplecov'
@@ -8,10 +8,10 @@ SimpleCov.start
 
 class RoundTest < Minitest::Test
   def setup
-    @card1  = FlashCard.new('What is the capital of Alaska?', 'Juneau')
-    @card2  = FlashCard.new('What is the color of the sky?', 'Blue')
-    @card3  = FlashCard.new('What is the capital of Texas?', 'Austin')
-    @card4  = FlashCard.new('How many continents are there?', '7')
+    @card1  = Card.new('What is the capital of Alaska?', 'Juneau')
+    @card2  = Card.new('What is the color of the sky?', 'Blue')
+    @card3  = Card.new('What is the capital of Texas?', 'Austin')
+    @card4  = Card.new('How many continents are there?', '7')
     @deck   = Deck.new([@card1, @card2, @card3, @card4])
     @round  = Round.new(@deck)
   end
@@ -78,9 +78,5 @@ class RoundTest < Minitest::Test
     @round.record_guess('Austin')
     @round.number_correct
     assert_equal 66, @round.percent_correct
-
-    @round.record_guess('7')
-    @round.number_correct
-    assert_equal 75, @round.percent_correct
   end
 end

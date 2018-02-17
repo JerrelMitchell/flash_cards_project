@@ -5,7 +5,6 @@ class Round
   def initialize(deck)
     @deck = deck
     @guesses = []
-    # binding.pry
   end
 
   def current_card
@@ -18,18 +17,13 @@ class Round
   end
 
   def number_correct
-    decisions = guesses.map do |guess|
+    @guesses.find_all do |guess|
       guess.correct?
-    end
-    @correct = decisions.find_all do |decision|
-      decision == true
-    end
-    @correct.count
+    end.count
   end
 
   def percent_correct
-    quotient = @correct.count.to_f / @guesses.count.to_f
-    percentage = quotient * 100
+    percentage = (number_correct / @guesses.count.to_f) * 100
     percentage.to_i
   end
 end

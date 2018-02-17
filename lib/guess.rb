@@ -2,10 +2,10 @@
 class Guess
   attr_reader :card, :response
 
-  def initialize(guess, flash_card)
+  def initialize(guess, card)
     @guess    = guess
-    @card     = flash_card
-    @response = flash_card.answer
+    @card     = card
+    @response = card.answer
   end
 
   def correct?

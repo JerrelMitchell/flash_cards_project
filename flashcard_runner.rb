@@ -1,4 +1,4 @@
-require './lib/flash_cards'
+require './lib/cards'
 require './lib/deck'
 require './lib/guess'
 require './lib/round'
@@ -8,22 +8,20 @@ require 'pry'
 # handles cards, deck(s), round(s), and their methods to output to terminal.
 class GameRunner < Round
   def initialize
-    @card1 = FlashCard.new('What is the capital of Alaska?', 'Juneau')
-    @card2 = FlashCard.new('What is the color of the sky?', 'Blue')
-    @card3 = FlashCard.new('What is the capital of Texas?', 'Austin')
+    @card1 = Card.new('What is the capital of Alaska?', 'Juneau')
+    @card2 = Card.new('What is the color of the sky?', 'Blue')
+    @card3 = Card.new('What is the capital of Texas?', 'Austin')
     @deck  = Deck.new([@card1, @card2, @card3])
     @round = Round.new(@deck)
   end
 
   def start
-    start_message = "Type 'Start' to begin a new round!"
-    start_message
+    "Type 'Start' to begin a new round!"
   end
 
   def header
-    header_message = "WELCOME! You're playing with #{@deck.count} cards.\n"
-    header_boarder = '_____________________________________'
-    header_message + header_boarder
+    "WELCOME! You're playing with #{@deck.count} cards.\n" \
+    '_____________________________________'
   end
 
   def footer
@@ -39,9 +37,8 @@ class GameRunner < Round
   end
 
   def score
-    score_message = "You had #{@round.number_correct} correct guesses out of
-                     #{@deck.count} for a score of #{@round.percent_correct}%."
-    score_message
+    "You had #{@round.number_correct} correct guesses out of
+      #{@deck.count} for a score of #{@round.percent_correct}%."
   end
 
   def show_current_card
@@ -49,9 +46,9 @@ class GameRunner < Round
   end
 end
 
-@card1 = FlashCard.new('What is the capital of Alaska?', 'Juneau')
-@card2 = FlashCard.new('What is the color of the sky?', 'Blue')
-@card3 = FlashCard.new('What is the capital of Texas?', 'Austin')
+@card1 = Card.new('What is the capital of Alaska?', 'Juneau')
+@card2 = Card.new('What is the color of the sky?', 'Blue')
+@card3 = Card.new('What is the capital of Texas?', 'Austin')
 @deck  = Deck.new([@card1, @card2, @card3])
 @round = Round.new(@deck)
 game = GameRunner.new
@@ -66,21 +63,26 @@ while start_command.to_s != 'START'
 end
 
 puts game.show_current_card
-puts game.ask_question
-
+puts @card1.question
 @round.record_guess(gets.chomp.to_s.capitalize)
 puts @round.guesses.last.feedback
+@round.number_correct
+
 puts game.show_current_card
-puts game.ask_question
+puts @card2.question
+@round.record_guess(gets.chomp.to_s.capitalize)
+@round.guesses.count
+puts @round.guesses.last.feedback
+@round.number_correct
 
-# puts footer
-# puts score
+puts game.show_current_card
+puts @card3.question
+@round.record_guess(gets.chomp.to_s.capitalize)
+@round.guesses.count
+puts @round.guesses.last.feedback
+@round.number_correct
 
-# round.record_guess(gets.chomp)
-# round.guesses.count
-# puts round.guesses.first.feedback
-# round.record_guess(gets.chomp)
-# round.guesses.count
-# puts round.guesses.last.feedback
-# round.number_correct
-# round.percent_correct
+@round.percent_correct
+
+puts game.footer
+puts game.score
