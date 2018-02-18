@@ -45,22 +45,12 @@ while start_command.to_s != 'START'
   start_command = gets.chomp.upcase
 end
 
-puts show_current_card
-puts ask_question
-@round.record_guess(gets.chomp.to_s.downcase)
-puts @round.guesses.last.feedback
-@round.number_correct
-
-puts show_current_card
-puts ask_question
-@round.record_guess(gets.chomp.to_s.downcase)
-puts @round.guesses.last.feedback
-@round.number_correct
-
-puts show_current_card
-puts ask_question
-@round.record_guess(gets.chomp.to_s.downcase)
-puts @round.guesses.last.feedback
-@round.number_correct
+4.times do
+  puts show_current_card
+  puts ask_question
+  @round.record_guess(gets.chomp.to_s.downcase)
+  puts @round.guesses.last.feedback
+  @round.number_correct
+end
 
 puts footer_with_score

@@ -1,18 +1,16 @@
-require './lib/deck'
-require 'pry'
 # will funnel information from .txt file to cards class.
 class CardGenerator
-  def initialize(filename)
-    @filename = filename
-    @generated_cards = []
-    # binding.pry
-  end
+  attr_accessor :cards
 
-  def cards
-    File.readlines(@filename).map do |line|
-      line_array = line.rpartition(',')
-      @generated_cards.push([Card.new(line_array.first, line_array.last.strip)])
-      # binding.pry
+  def initialize(filename)
+    @cards = []
+    File.open(filename, 'r').each_line do |line|
+      card_array = line.split(/\n/)
+      question, answer = card_array.map do |card|
+        card.split(',')
+      end.flatten
+      card = Card.new(question, answer)
+      @cards.push(card)
     end
   end
 end
