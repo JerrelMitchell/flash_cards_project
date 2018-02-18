@@ -5,11 +5,11 @@ class CardGenerator
     @filename = filename
   end
 
-  def cards_array
-    File.readlines(@filename).each { |line| line.rpartition(',').compact }
-  end
-
-  def from_file_to_cards
-    Card.new(cards_array.first, cards_array.last)
+  def cards
+    File.readlines(@filename).map do |line|
+      line_array = line.rpartition(',')
+      @generated_card = Card.new(line_array.first, line_array.last.strip)
+    end
+    @generated_card
   end
 end

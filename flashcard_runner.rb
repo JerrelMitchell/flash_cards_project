@@ -2,11 +2,11 @@ require './lib/cards'
 require './lib/deck'
 require './lib/guess'
 require './lib/round'
+require './lib/card_generator'
 
-@card1 = Card.new('What is the capital of Alaska?', 'juneau')
-@card2 = Card.new('What is the color of the sky?', 'blue')
-@card3 = Card.new('What is the capital of Texas?', 'austin')
-@deck  = Deck.new([@card1, @card2, @card3])
+@filename = 'cards.txt'
+@cards = CardGenerator.new(@filename).cards
+@deck  = Deck.new([@cards])
 @round = Round.new(@deck)
 
 def start

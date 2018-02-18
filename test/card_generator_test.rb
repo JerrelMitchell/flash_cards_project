@@ -7,7 +7,7 @@ require './lib/card_generator'
 class CardGeneratorTest < Minitest::Test
   def setup
     @filename = 'cards.txt'
-    @cards = CardGenerator.new(@filename)
+    @cards = CardGenerator.new(@filename).cards
   end
 
   def test_it_exists
@@ -15,10 +15,6 @@ class CardGeneratorTest < Minitest::Test
   end
 
   def test_it_reads_files_and_puts_them_into_array
-    assert_equal @cards.cards_array, File.readlines(@filename)
-  end
-
-  def test_it_turns_line_from_file_into_cards
-    assert_instance_of Card, @cards.from_file_to_cards
+    assert_instance_of Card, @cards.cards_array
   end
 end
