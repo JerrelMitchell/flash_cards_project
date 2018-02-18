@@ -6,7 +6,7 @@ require './lib/card_generator'
 
 @filename = 'cards.txt'
 @cards = CardGenerator.new(@filename).cards
-@deck  = Deck.new([@cards])
+@deck  = Deck.new(@cards)
 @round = Round.new(@deck)
 
 def start
