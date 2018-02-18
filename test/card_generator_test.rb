@@ -6,19 +6,19 @@ require './lib/card_generator'
 
 class CardGeneratorTest < Minitest::Test
   def setup
-    @cards = CardGenerator.new('cards.txt')
+    @filename = 'cards.txt'
+    @cards = CardGenerator.new(@filename)
   end
 
   def test_it_exists
     assert_instance_of CardGenerator, @cards
   end
 
-  def test_it_can_recognize_an_external_file
-    assert_equal 'cards.txt', @cards.filename
+  def test_it_reads_files_and_puts_them_into_array
+    assert_equal @cards.cards_array, File.readlines(@filename)
   end
 
-  def test_it_creates_deck_of_cards
-    deck = Deck.new(@cards)
-    assert_equal deck, @cards
+  def test_it_turns_line_from_file_into_cards
+    assert_instance_of Card, @cards.from_file_to_cards
   end
 end
